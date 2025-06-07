@@ -49,7 +49,7 @@ public abstract class ServerPlayNetworkHandlerMixin {
             if (bot == null) continue;
             ServerPlayerEntity toRemove = playerManager.getPlayer(bot);
             if (toRemove == null) continue;
-            toRemove.kill(toRemove.getServerWorld());
+            toRemove.kill();
             bots.remove(bot);
         }
         if (bots.isEmpty()) {
