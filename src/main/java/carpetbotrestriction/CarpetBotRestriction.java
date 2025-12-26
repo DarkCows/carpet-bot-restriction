@@ -109,7 +109,7 @@ public class CarpetBotRestriction implements ModInitializer {
 									}
 									CONFIG.set(String.format("%s.maxBots", player.getUuid().toString()), value);
 									CompletableFuture.runAsync(() -> CONFIG.save());
-									CarpetBotRestriction.say(context.getSource(), String.format("Set player %s's maxBots to %d", player.getGameProfile().getName(), value));
+									CarpetBotRestriction.say(context.getSource(), String.format("Set player %s's maxBots to %d", player.getGameProfile().name(), value));
 									return 1;
 								})))
 							.then(literal("unset")
@@ -117,7 +117,7 @@ public class CarpetBotRestriction implements ModInitializer {
 								ServerPlayerEntity player = EntityArgumentType.getPlayer(context, "player");
 								CONFIG.remove(String.format("%s.maxBots", player.getUuid().toString()));
 								CompletableFuture.runAsync(() -> CONFIG.save());
-								CarpetBotRestriction.say(context.getSource(), String.format("Unset %s's maxBots to default value", player.getGameProfile().getName()));
+								CarpetBotRestriction.say(context.getSource(), String.format("Unset %s's maxBots to default value", player.getGameProfile().name()));
 								return 1;
 							}))))));});
 
