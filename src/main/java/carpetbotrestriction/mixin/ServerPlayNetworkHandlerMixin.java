@@ -41,7 +41,7 @@ public abstract class ServerPlayNetworkHandlerMixin {
         if (!CarpetBotRestriction.CONFIG.get("removeOnDisconnect", false)) return;
         ObjectOpenHashSet<UUID> bots = CarpetBotRestriction.PLAYERS.get(entity);
         if (bots == null) return;
-        MinecraftServer mc = this.getPlayer().getServer();
+        MinecraftServer mc = this.getPlayer().getEntityWorld().getServer();
         if (mc == null) return;
         PlayerManager playerManager = mc.getPlayerManager();
         if (playerManager == null) return;
@@ -49,7 +49,7 @@ public abstract class ServerPlayNetworkHandlerMixin {
             if (bot == null) continue;
             ServerPlayerEntity toRemove = playerManager.getPlayer(bot);
             if (toRemove == null) continue;
-            toRemove.kill(toRemove.getServerWorld());
+            toRemove.kill(toRemove.getEntityWorld());
             bots.remove(bot);
         }
         if (bots.isEmpty()) {
