@@ -75,7 +75,7 @@ public class PlayerCommandMixin {
         }
         if (botList != null && botList.size() >= playerBotLimit) {
             CarpetBotRestriction.error(source, String.format("You cannot have more than %d bots.", playerBotLimit));
-            CarpetBotRestriction.LOGGER.debug("Prevented {} from spawning new bot: Limit is {} bots.", player.getGameProfile().getName(), playerBotLimit);
+            CarpetBotRestriction.LOGGER.debug("Prevented {} from spawning new bot: Limit is {} bots.", player.getGameProfile().name(), playerBotLimit);
             cir.setReturnValue(true);
             cir.cancel();
         }
@@ -102,7 +102,7 @@ public class PlayerCommandMixin {
         if (player == null) return;
         if (CarpetBotRestriction.CONFIG.get("removeOnDisconnect", false)) {
             CarpetBotRestriction.error(source, "You cannot shadow: this server is configured so your bots will be removed on disconnect");
-            CarpetBotRestriction.LOGGER.debug("Prevented {} from shadowing: removeOnDisconnect is true", player.getGameProfile().getName());
+            CarpetBotRestriction.LOGGER.debug("Prevented {} from shadowing: removeOnDisconnect is true", player.getGameProfile().name());
             cir.setReturnValue(0);
             cir.cancel();
         }
@@ -112,7 +112,7 @@ public class PlayerCommandMixin {
                 CarpetBotRestriction.CONFIG.get("defaultMaxBots", 2));
         if ((botList != null && botList.size() >= playerBotLimit)) {
             CarpetBotRestriction.error(source, String.format("You cannot have more than %d bots. Shadowing will create another bot.", playerBotLimit));
-            CarpetBotRestriction.LOGGER.debug("Prevented {} from shadowing: Limit is {} bots.", player.getGameProfile().getName(), playerBotLimit);
+            CarpetBotRestriction.LOGGER.debug("Prevented {} from shadowing: Limit is {} bots.", player.getGameProfile().name(), playerBotLimit);
             cir.setReturnValue(0);
             cir.cancel();
         }
